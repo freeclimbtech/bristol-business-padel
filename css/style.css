@@ -178,26 +178,6 @@ button, input, select { font: inherit; color: inherit; }
   padding-block: clamp(80px, 14vw, 160px) clamp(60px, 10vw, 110px);
 }
 
-/* ---------- Ball scene: pinned scroll animation, plays after the hero ---------- */
-.ball-scene {
-  position: relative;
-  overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* The "camera": everything visually scaled for the zoom effect lives here.
-   Text sits outside it so it stays crisp while the scene moves. */
-.hero-camera {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  transform-origin: 50% 50%;
-  will-change: transform;
-}
-
 .hero-bg { position: absolute; inset: 0; z-index: 0; }
 .hero-photo {
   position: absolute;
@@ -207,39 +187,12 @@ button, input, select { font: inherit; color: inherit; }
   object-fit: cover;
   object-position: center 70%;
 }
-/* Padel court surface photo for the ball scene, with a blue tint/scrim on
-   top so a modest-resolution source photo still reads crisp at full bleed
-   and stays consistent with the site's dark theme. */
-.court-photo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.court-blue-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(120% 90% at 50% 10%, oklch(0.4 0.1 255 / 0.35) 0%, transparent 55%),
-    linear-gradient(165deg, oklch(0.3 0.12 258 / 0.55) 0%, oklch(0.1 0.05 260 / 0.82) 75%);
-}
 .hero-scrim {
   position: absolute;
   inset: 0;
   background:
     linear-gradient(90deg, color-mix(in oklch, var(--bg) 92%, transparent) 0%, color-mix(in oklch, var(--bg) 55%, transparent) 55%, color-mix(in oklch, var(--bg) 20%, transparent) 100%),
     linear-gradient(0deg, var(--bg) 0%, transparent 35%);
-}
-/* Secondary gradient the scroll animation fades in during the orbit phase,
-   giving the "background subtly shifts" beat. Invisible at rest. */
-.hero-gradient {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-}
-.hero-gradient-b {
-  background: radial-gradient(circle at 28% 72%, color-mix(in oklch, var(--volt) 60%, transparent), transparent 62%);
 }
 .glow {
   position: absolute;
@@ -258,59 +211,12 @@ button, input, select { font: inherit; color: inherit; }
   to { transform: translate(40px, 30px); }
 }
 
-/* ---------- Ball ---------- */
-.ball-stage-inner { position: absolute; inset: 0; z-index: 1; }
-.ball-orbit {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: min(60vw, 560px);
-  aspect-ratio: 1;
-  transform: translate(-50%, -50%);
-  will-change: transform;
-}
-.ball-spin {
-  width: 100%;
-  height: 100%;
-  will-change: transform, filter;
-}
-.ball-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  filter: drop-shadow(0 18px 34px rgba(0,0,0,0.45));
-}
-
 .hero-inner { position: relative; z-index: 2; max-width: 780px; }
 .hero-kicker {
   color: var(--muted);
   font-weight: 500;
   font-size: 1rem;
   margin-bottom: 18px;
-}
-
-.ball-scene-copy { position: relative; z-index: 2; text-align: center; }
-
-/* Word sequence: each word stacks on the same grid cell so they cross-fade
-   in place rather than pushing layout around. */
-.hero-sequence {
-  display: grid;
-  justify-items: center;
-  opacity: 0;
-  pointer-events: none;
-}
-.hero-sequence .seq-word {
-  grid-area: 1 / 1;
-  align-self: start;
-  opacity: 0;
-  font-family: var(--font-display);
-  text-transform: uppercase;
-  font-weight: 400;
-  line-height: 0.96;
-  letter-spacing: -0.01em;
-  font-size: clamp(2.6rem, 7.5vw, 5.4rem);
-  color: var(--court);
 }
 
 .hero-title {
@@ -320,6 +226,7 @@ button, input, select { font: inherit; color: inherit; }
   line-height: 0.96;
   letter-spacing: -0.01em;
   font-size: clamp(2.6rem, 7.5vw, 5.4rem);
+  margin-bottom: 26px;
 }
 .hero-title .line {
   display: block;
