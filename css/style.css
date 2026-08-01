@@ -264,16 +264,46 @@ button, input, select { font: inherit; color: inherit; }
   object-fit: contain;
   will-change: transform;
 }
-/* Same source image, masked to only its half: the inner ball... */
-.ball-core {
-  -webkit-mask-image: radial-gradient(circle at 46% 45%, #000 0 29%, transparent 31%);
-          mask-image: radial-gradient(circle at 46% 45%, #000 0 29%, transparent 31%);
-}
-/* ...or only the outer water-droplet ring. Rotated independently in JS so
-   the droplets read as flinging outward as the ball spins. */
+/* The source photo's droplets sit almost flush against the ball with no
+   clean gap to split on, so the mask hides generously past the ball's
+   edge (into the transition zone) rather than trying to draw a precise
+   line — the CSS ball on top covers the rest. Rotated independently in
+   JS so the droplets read as flinging outward as the ball spins. */
 .ball-ring {
-  -webkit-mask-image: radial-gradient(circle at 46% 45%, transparent 0 30%, #000 33% 100%);
-          mask-image: radial-gradient(circle at 46% 45%, transparent 0 30%, #000 33% 100%);
+  -webkit-mask-image: radial-gradient(circle at 46% 45%, transparent 0 28%, #000 32% 100%);
+          mask-image: radial-gradient(circle at 46% 45%, transparent 0 28%, #000 32% 100%);
+}
+/* The ball itself: a plain CSS sphere, not the photo. Shares zero pixels
+   with the droplet ring, so it genuinely cannot move together with it. */
+.ball-core {
+  position: absolute;
+  left: 46%;
+  top: 45%;
+  width: 62%;
+  aspect-ratio: 1;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 28%, oklch(0.94 0.16 128), oklch(0.86 0.23 142) 38%, oklch(0.6 0.19 142) 78%, oklch(0.42 0.15 142) 100%);
+  box-shadow: inset -8px -10px 18px oklch(0.2 0.05 142 / 0.4);
+  will-change: transform;
+  overflow: hidden;
+}
+/* Two flattened, rotated ovals clipped by the sphere's own circular
+   overflow — reads as a curved seam crossing the ball, not a full ring. */
+.ball-seam {
+  position: absolute;
+  border: 2px solid oklch(0.98 0 0 / 0.85);
+  border-radius: 50%;
+}
+.ball-seam-a {
+  inset: 12% -18%;
+  transform: rotate(20deg);
+}
+.ball-seam-b {
+  inset: -18% 12%;
+  transform: rotate(-20deg);
 }
 
 @media (max-width: 640px) {
