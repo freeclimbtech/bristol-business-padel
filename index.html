@@ -77,6 +77,22 @@
     </div>
   </section>
 
+  <!-- BALL SCENE: not pinned — rotation just scrubs to normal scroll while
+       the section is in view, so scroll never locks. Two masked copies of
+       the same image spin at different rates to fake depth: ball core vs
+       droplet ring. See js/ball-animation.js. -->
+  <section class="ball-scene" id="ball-stage">
+    <div class="ball-scene-bg" aria-hidden="true">
+      <img class="court-photo" src="assets/photos/court-reference.jpg" alt="">
+      <div class="court-scrim"></div>
+    </div>
+    <div class="ball-rig" aria-hidden="true">
+      <div class="ball-glow"></div>
+      <img class="ball-layer ball-ring" src="assets/photos/ball-graphic.png" alt="">
+      <img class="ball-layer ball-core" src="assets/photos/ball-graphic.png" alt="">
+    </div>
+  </section>
+
   <!-- WHAT HAPPENS -->
   <section class="session section-light" id="session">
     <div class="wrap session-grid">
@@ -208,6 +224,9 @@
   </div>
 </footer>
 
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="js/ball-animation.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
