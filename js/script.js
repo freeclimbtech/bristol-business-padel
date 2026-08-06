@@ -3,7 +3,11 @@
 
   const JAMES_EMAIL = "james@bristolbusinesspadel.co.uk"; // TODO: replace with James's real email
 
-  // Scroll-reveal via IntersectionObserver
+  // Scroll-reveal via IntersectionObserver. Elements are visible by default
+  // in CSS (motion only enhances them), but as a safety net, force-reveal
+  // anything still hidden shortly after load — covers short pages where
+  // content already fits the viewport and a real scroll/intersection event
+  // may never fire.
   const revealEls = document.querySelectorAll("[data-reveal]");
   if ("IntersectionObserver" in window && revealEls.length) {
     const io = new IntersectionObserver(
@@ -15,9 +19,12 @@
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.1, rootMargin: "0px" }
     );
     revealEls.forEach((el) => io.observe(el));
+    setTimeout(() => {
+      revealEls.forEach((el) => el.classList.add("is-visible"));
+    }, 1200);
   } else {
     revealEls.forEach((el) => el.classList.add("is-visible"));
   }
