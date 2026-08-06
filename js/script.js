@@ -47,4 +47,31 @@
       window.location.href = mailto;
     });
   }
+
+  // Map picker: pick Apple Maps / Google Maps / Waze for the venue address
+  document.querySelectorAll(".map-picker").forEach((picker) => {
+    const trigger = picker.querySelector(".map-picker-trigger");
+    const menu = picker.querySelector(".map-picker-menu");
+    if (!trigger || !menu) return;
+
+    const close = () => {
+      menu.hidden = true;
+      trigger.setAttribute("aria-expanded", "false");
+    };
+    const open = () => {
+      menu.hidden = false;
+      trigger.setAttribute("aria-expanded", "true");
+    };
+
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      menu.hidden ? open() : close();
+    });
+    document.addEventListener("click", (e) => {
+      if (!picker.contains(e.target)) close();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") close();
+    });
+  });
 })();
