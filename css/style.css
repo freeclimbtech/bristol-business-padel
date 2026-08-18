@@ -645,6 +645,60 @@ section[id] { scroll-margin-top: 84px; }
 .coach p { color: var(--muted); margin-top: 4px; max-width: 46ch; }
 .coach .btn { margin-top: 20px; }
 
+/* ---------- Members marquee ----------
+   Placeholder slots (dashed circle, "+") ready for real member photos —
+   deliberately not filled with fake names. Two identical tracks side by
+   side, scrolled -50% for a seamless loop; pauses on hover. */
+.members-section { padding-bottom: clamp(50px, 8vw, 80px); }
+.members-marquee-wrap {
+  position: relative;
+  overflow: hidden;
+  margin-top: 44px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.members-marquee {
+  display: flex;
+  width: max-content;
+  animation: members-scroll 28s linear infinite;
+}
+.members-marquee:hover { animation-play-state: paused; }
+.members-track {
+  display: flex;
+  gap: 28px;
+  padding-inline: 14px;
+}
+@keyframes members-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.member-card {
+  width: 150px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+.member-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px dashed var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 1.5rem;
+}
+.member-name { font-weight: 700; color: var(--muted); font-size: 0.9rem; font-style: italic; }
+.member-role { color: var(--muted); font-size: 0.8rem; opacity: 0.7; }
+
+@media (prefers-reduced-motion: reduce) {
+  .members-marquee { animation: none; }
+}
+
 /* ---------- About CTA ---------- */
 .about-cta-inner { text-align: center; }
 .about-cta-inner .btn { margin-top: 26px; }
