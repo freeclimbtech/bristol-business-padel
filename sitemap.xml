@@ -31,6 +31,16 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://freeclimbtech.github.io/bristol-business-padel/blog-why-we-started.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://freeclimbtech.github.io/bristol-business-padel/blog-why-padel-works-for-networking.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://freeclimbtech.github.io/bristol-business-padel/contact.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

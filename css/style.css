@@ -758,6 +758,32 @@ section[id] { scroll-margin-top: 84px; }
 .blog-empty-inner p { color: var(--muted); margin-top: 18px; max-width: 52ch; }
 .blog-empty-inner .link-arrow { margin-top: 22px; }
 
+.post-list { display: flex; flex-direction: column; }
+.post-row {
+  display: block;
+  padding-block: 30px;
+  border-top: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+}
+.post-list .post-row:last-child { border-bottom: 1px solid var(--line); }
+.post-row h2 { font-size: 1.3rem; transition: color 0.2s var(--ease-out-expo); }
+.post-row:hover h2 { color: var(--court-text); }
+.post-row p { color: var(--muted); margin-top: 8px; max-width: 62ch; }
+.post-row .post-kicker {
+  display: block;
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: var(--court-text);
+  margin-bottom: 8px;
+}
+
+.post-body { max-width: 68ch; }
+.post-body p { color: var(--ink); font-size: 1.02rem; margin-top: 22px; text-wrap: pretty; }
+.post-body p:first-of-type { margin-top: 0; }
+.post-body a:not(.btn) { color: var(--court-text); font-weight: 600; }
+.post-body .btn { margin-top: 34px; }
+
 /* ---------- Contact ---------- */
 .contact-row {
   display: flex;
