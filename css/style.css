@@ -489,9 +489,14 @@ section[id] { scroll-margin-top: 84px; }
 }
 .link-arrow:hover { gap: 14px; }
 
+.venue-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
 .venue-photos img {
   width: 100%;
-  height: clamp(320px, 34vw, 460px);
+  height: clamp(220px, 24vw, 460px);
   object-fit: cover;
   border-radius: var(--radius);
   background: var(--surface);
