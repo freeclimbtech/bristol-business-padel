@@ -643,6 +643,11 @@ section[id] { scroll-margin-top: 84px; }
   gap: 44px;
 }
 .coach-avatar { margin-bottom: 20px; }
+.coach-avatar-photo {
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 20%;
+}
 .coach h3 { font-size: 1.25rem; margin-bottom: 4px; }
 .coach p { color: var(--muted); margin-top: 4px; max-width: 46ch; }
 .coach .btn { margin-top: 20px; }
