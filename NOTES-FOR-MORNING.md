@@ -48,13 +48,11 @@ no need to re-explain anything.
    (placeholder — **not real**, swap it in `js/script.js`). Consider
    Formspree/Netlify Forms for a proper one-click submit once you give me
    James's real address.
-2. **Gabby's contact info** is a placeholder email
-   (`gabby@bristolbusinesspadel.co.uk`, in `about.html`) — send her real
-   contact details (email, phone, or WhatsApp like Will's) and I'll swap
-   it in.
-3. **Host/coach photos**: James, Yinka, Gabby all show as initial-letter
-   avatars. Send real headshots to replace them (Will too, if you'd
-   rather have a photo than his initial).
+2. ~~Gabby's contact info~~ — done. Real email (`book@padelbygabriela.com`)
+   and Instagram (`@padelbygabriela`) now in `about.html`.
+3. ~~Host/coach photos~~ — James and Gabby now have real headshots.
+   Yinka and Will still show as initial-letter avatars; send real photos
+   to replace them.
 4. Confirm the WhatsApp group is genuinely invite-only via James manually
    adding people — if there's a direct join link instead, easy swap.
 
