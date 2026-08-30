@@ -170,8 +170,67 @@ button, input, select { font: inherit; color: inherit; }
 .main-nav a:hover { color: var(--ink); }
 .main-nav a[aria-current="page"] { color: var(--court); }
 
+/* Mobile nav toggle: hidden on desktop, shown + wired up below 760px */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ink);
+}
+.nav-toggle-icon {
+  position: relative;
+  width: 20px;
+  height: 14px;
+}
+.nav-toggle-icon span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.25s var(--ease-out-expo), opacity 0.2s var(--ease-out-expo), top 0.25s var(--ease-out-expo);
+}
+.nav-toggle-icon span:nth-child(1) { top: 0; }
+.nav-toggle-icon span:nth-child(2) { top: 6px; }
+.nav-toggle-icon span:nth-child(3) { top: 12px; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon span:nth-child(1) {
+  top: 6px;
+  transform: rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon span:nth-child(3) {
+  top: 6px;
+  transform: rotate(-45deg);
+}
+
 @media (max-width: 760px) {
   .main-nav { display: none; }
+  .nav-toggle { display: flex; }
+
+  .main-nav.is-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    gap: 2px;
+    padding: 12px clamp(20px, 5vw, 40px) 20px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  .main-nav.is-open a {
+    padding: 12px 0;
+    border-bottom: 1px solid color-mix(in oklch, var(--line) 60%, transparent);
+  }
+  .main-nav.is-open a:last-child { border-bottom: none; }
 }
 
 /* ---------- Hero ---------- */

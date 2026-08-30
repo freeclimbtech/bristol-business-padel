@@ -55,6 +55,34 @@
     });
   }
 
+  // Mobile nav: hamburger toggle opens/closes the nav as a dropdown panel
+  const navToggle = document.querySelector(".nav-toggle");
+  const mainNav = document.getElementById("mainNav");
+  if (navToggle && mainNav) {
+    const closeNav = () => {
+      mainNav.classList.remove("is-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    };
+    const openNav = () => {
+      mainNav.classList.add("is-open");
+      navToggle.setAttribute("aria-expanded", "true");
+    };
+
+    navToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      mainNav.classList.contains("is-open") ? closeNav() : openNav();
+    });
+    mainNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeNav);
+    });
+    document.addEventListener("click", (e) => {
+      if (!mainNav.contains(e.target) && e.target !== navToggle) closeNav();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeNav();
+    });
+  }
+
   // Map picker: pick Apple Maps / Google Maps / Waze for the venue address
   document.querySelectorAll(".map-picker").forEach((picker) => {
     const trigger = picker.querySelector(".map-picker-trigger");
