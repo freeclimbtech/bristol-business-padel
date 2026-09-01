@@ -169,6 +169,7 @@ button, input, select { font: inherit; color: inherit; }
 }
 .main-nav a:hover { color: var(--ink); }
 .main-nav a[aria-current="page"] { color: var(--court); }
+.main-nav-cta { display: none; }
 
 /* Mobile nav toggle: hidden on desktop, shown + wired up below 760px */
 .nav-toggle {
@@ -213,6 +214,7 @@ button, input, select { font: inherit; color: inherit; }
 @media (max-width: 760px) {
   .main-nav { display: none; }
   .nav-toggle { display: flex; }
+  .header-row > .btn { display: none; }
 
   .main-nav.is-open {
     display: flex;
@@ -221,16 +223,27 @@ button, input, select { font: inherit; color: inherit; }
     top: 100%;
     left: 0;
     right: 0;
-    gap: 2px;
-    padding: 12px clamp(20px, 5vw, 40px) 20px;
+    gap: 4px;
+    padding: 14px clamp(20px, 5vw, 40px) 24px;
     background: var(--bg);
     border-bottom: 1px solid var(--line);
   }
   .main-nav.is-open a {
-    padding: 12px 0;
+    padding: 16px 4px;
+    font-size: 1.1rem;
     border-bottom: 1px solid color-mix(in oklch, var(--line) 60%, transparent);
   }
   .main-nav.is-open a:last-child { border-bottom: none; }
+  .main-nav.is-open .main-nav-cta {
+    display: block;
+    margin-top: 10px;
+    padding: 15px 4px;
+    text-align: center;
+    background: var(--court);
+    color: var(--court-ink);
+    border-radius: 12px;
+    font-weight: 700;
+  }
 }
 
 /* ---------- Hero ---------- */
