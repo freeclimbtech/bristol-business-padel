@@ -640,10 +640,7 @@ section[id] { scroll-margin-top: 84px; }
 
 /* ---------- Sub-page intro banner (About / Partners) ---------- */
 .page-intro {
-  padding-block: clamp(120px, 16vw, 180px) clamp(50px, 8vw, 80px);
-}
-.page-intro-tight {
-  padding-block-start: clamp(64px, 9vw, 100px);
+  padding-block: clamp(64px, 9vw, 100px) clamp(50px, 8vw, 80px);
 }
 .page-title {
   font-family: var(--font-display);
@@ -686,6 +683,30 @@ section[id] { scroll-margin-top: 84px; }
   margin-top: 56px;
   padding-top: 56px;
   border-top: 1px solid var(--line);
+}
+/* Desktop: James left, Yinka right, Beth centred underneath the gap */
+@media (min-width: 761px) {
+  .organisers .wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 56px;
+    row-gap: 56px;
+    align-items: start;
+  }
+  .about-james-grid { grid-column: 1; grid-row: 1; }
+  .about-james-grid-yinka {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+  .about-james-grid-beth {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    max-width: 420px;
+    margin-inline: auto;
+  }
 }
 .about-james-grid h2 { margin-bottom: 6px; }
 .about-role {
