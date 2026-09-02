@@ -132,6 +132,9 @@ button, input, select { font: inherit; color: inherit; }
   gap: 24px;
   padding-block: 16px;
 }
+.header-row > .btn {
+  margin-left: 16px;
+}
 .brand {
   display: flex;
   align-items: center;
@@ -661,9 +664,9 @@ section[id] { scroll-margin-top: 84px; }
 
 /* ---------- About: James / 299 Lighting ---------- */
 .about-avatar {
-  width: 88px;
-  height: 88px;
-  font-size: 2rem;
+  width: 168px;
+  height: 168px;
+  font-size: 3.8rem;
   flex-shrink: 0;
 }
 .about-avatar-photo {
