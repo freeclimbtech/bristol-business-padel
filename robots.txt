@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://freeclimbtech.github.io/bristol-business-padel/sitemap.xml
+Sitemap: https://businesspadelnetworking.com/sitemap.xml
