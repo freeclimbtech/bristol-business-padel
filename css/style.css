@@ -131,9 +131,9 @@ button, input, select { font: inherit; color: inherit; }
    than waiting until after — impact ~930ms, racket settled by 1240ms
    (0%/48.4%/75%/100% of the 1.24s duration). */
 @keyframes loader-racket {
-  0%, 48.4% { transform: translate(-5%, -50%) translateX(0); animation-timing-function: ease-in; }
-  75%       { transform: translate(-5%, -50%) translateX(-14px); animation-timing-function: ease-out; }
-  100%      { transform: translate(-5%, -50%) translateX(0); }
+  0%, 48.4% { transform: translate(3%, -50%) translateX(0); animation-timing-function: ease-in; }
+  75%       { transform: translate(3%, -50%) translateX(-14px); animation-timing-function: ease-out; }
+  100%      { transform: translate(3%, -50%) translateX(0); }
 }
 /* Ball motion is split across two elements so each axis gets the easing it
    actually needs: this (the track) covers X position, opacity, squash and
