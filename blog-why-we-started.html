@@ -47,7 +47,27 @@
 </head>
 <body>
 
+<div class="site-loader" id="siteLoader" aria-hidden="true">
+  <div class="loader-stage">
+    <svg class="loader-racket" viewBox="0 0 120 170" width="90" height="128" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="racketDots" width="14" height="14" patternUnits="userSpaceOnUse">
+          <circle cx="7" cy="7" r="2.6" fill="#fff"/>
+        </pattern>
+      </defs>
+      <g transform="rotate(14 60 85)">
+        <rect x="15" y="8" width="90" height="112" rx="45" fill="url(#racketDots)" stroke="#fff" stroke-width="5"/>
+        <rect x="49" y="116" width="22" height="42" rx="7" fill="#fff"/>
+        <rect x="52" y="156" width="16" height="9" rx="3" fill="#fff" opacity="0.55"/>
+      </g>
+    </svg>
+    <div class="loader-impact" aria-hidden="true"></div>
+    <div class="loader-ball" aria-hidden="true"></div>
+  </div>
+</div>
+
 <a class="skip-link" href="index.html#join">Skip to join form</a>
+
 
 <header class="site-header" id="top">
   <div class="wrap header-row">

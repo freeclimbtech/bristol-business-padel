@@ -3,6 +3,39 @@
 
   const JAMES_EMAIL = "james@bristolbusinesspadel.co.uk"; // TODO: replace with James's real email
 
+  // Padel loading animation: plays once (ball enters, hits the racket,
+  // returns), then holds on the racket-only frame until the page has
+  // actually finished loading, then fades out. A safety cap stops a slow
+  // load from trapping visitors behind it indefinitely.
+  const loader = document.getElementById("siteLoader");
+  if (loader) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      loader.remove();
+    } else {
+      const MIN_HOLD_MS = 1400; // matches the CSS animation duration
+      const MAX_WAIT_MS = 4000; // never block visitors longer than this
+      const startedAt = Date.now();
+      let hidden = false;
+
+      const hideLoader = () => {
+        if (hidden) return;
+        hidden = true;
+        const wait = Math.max(0, MIN_HOLD_MS - (Date.now() - startedAt));
+        setTimeout(() => {
+          loader.classList.add("is-hidden");
+          loader.addEventListener("transitionend", () => loader.remove(), { once: true });
+        }, wait);
+      };
+
+      if (document.readyState === "complete") {
+        hideLoader();
+      } else {
+        window.addEventListener("load", hideLoader, { once: true });
+      }
+      setTimeout(hideLoader, MAX_WAIT_MS);
+    }
+  }
+
   // Scroll-reveal via IntersectionObserver. Elements are visible by default
   // in CSS (motion only enhances them), but as a safety net, force-reveal
   // anything still hidden shortly after load — covers short pages where
