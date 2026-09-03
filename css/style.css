@@ -763,6 +763,11 @@ section[id] { scroll-margin-top: 84px; }
   border-radius: var(--radius);
   background: var(--surface);
 }
+.venue-photo-signage {
+  /* The green "We are Rocket Padel" sign sits left-of-centre in the
+     source photo — bias the crop that way so it never gets cut off. */
+  object-position: 25% 50%;
+}
 .venue-photos.no-photos {
   background: linear-gradient(155deg, var(--bg-alt), color-mix(in oklch, var(--bg-alt) 70%, var(--line)));
   border: 1px solid var(--line);
