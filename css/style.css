@@ -127,11 +127,11 @@ button, input, select { font: inherit; color: inherit; }
 
 /* Racket now closes the last stretch of the gap itself — sits still while
    the ball crosses in, dips left to meet it right at contact, then eases
-   back to rest. Timings match the client's storyboard: ball arrives
-   ~700ms, racket starts moving ~780ms, impact ~930ms, racket settled by
-   1240ms (0%/62.9%/75%/100% of the 1.24s duration). */
+   back to rest. Starts moving ~600ms, just as the ball arrives, rather
+   than waiting until after — impact ~930ms, racket settled by 1240ms
+   (0%/48.4%/75%/100% of the 1.24s duration). */
 @keyframes loader-racket {
-  0%, 62.9% { transform: translate(-18%, -50%) translateX(0); animation-timing-function: ease-in; }
+  0%, 48.4% { transform: translate(-18%, -50%) translateX(0); animation-timing-function: ease-in; }
   75%       { transform: translate(-18%, -50%) translateX(-14px); animation-timing-function: ease-out; }
   100%      { transform: translate(-18%, -50%) translateX(0); }
 }
