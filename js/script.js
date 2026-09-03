@@ -12,7 +12,7 @@
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       loader.remove();
     } else {
-      const MIN_HOLD_MS = 1400; // matches the CSS animation duration
+      const MIN_HOLD_MS = 1240; // matches the CSS animation duration
       const MAX_WAIT_MS = 4000; // never block visitors longer than this
       const startedAt = Date.now();
       let hidden = false;

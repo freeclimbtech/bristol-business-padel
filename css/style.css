@@ -76,7 +76,7 @@ button, input, select { font: inherit; color: inherit; }
   justify-content: center;
   background: var(--bg);
   opacity: 1;
-  transition: opacity 0.4s var(--ease-out-expo);
+  transition: opacity 0.6s var(--ease-out-expo);
 }
 .site-loader.is-hidden { opacity: 0; pointer-events: none; }
 .loader-stage {
@@ -90,7 +90,7 @@ button, input, select { font: inherit; color: inherit; }
   left: 50%;
   width: 100px;
   height: 142px;
-  transform: translate(-18%, -50%);
+  animation: loader-racket 1.24s 1 both;
 }
 .loader-ball-track {
   position: absolute;
@@ -101,13 +101,13 @@ button, input, select { font: inherit; color: inherit; }
   margin: -10px 0 0 -10px;
   border-radius: 50%;
   opacity: 0;
-  animation: loader-ball-x 1.4s linear 1 both;
+  animation: loader-ball-x 1.24s linear 1 both;
 }
 .loader-ball {
   display: block;
   width: 100%;
   height: 100%;
-  animation: loader-ball-arc 1.4s 1 both;
+  animation: loader-ball-arc 1.24s 1 both;
 }
 .loader-impact {
   position: absolute;
@@ -122,16 +122,28 @@ button, input, select { font: inherit; color: inherit; }
   background: repeating-conic-gradient(var(--court) 0deg 8deg, transparent 8deg 45deg);
   -webkit-mask: radial-gradient(circle, transparent 40%, #000 42%, #000 55%, transparent 58%);
           mask: radial-gradient(circle, transparent 40%, #000 42%, #000 55%, transparent 58%);
-  animation: loader-impact 1.4s ease-out 1 both;
+  animation: loader-impact 1.24s ease-out 1 both;
 }
 
+/* Racket now closes the last stretch of the gap itself — sits still while
+   the ball crosses in, dips left to meet it right at contact, then eases
+   back to rest. Timings match the client's storyboard: ball arrives
+   ~700ms, racket starts moving ~780ms, impact ~930ms, racket settled by
+   1240ms (0%/62.9%/75%/100% of the 1.24s duration). */
+@keyframes loader-racket {
+  0%, 62.9% { transform: translate(-18%, -50%) translateX(0); animation-timing-function: ease-in; }
+  75%       { transform: translate(-18%, -50%) translateX(-14px); animation-timing-function: ease-out; }
+  100%      { transform: translate(-18%, -50%) translateX(0); }
+}
 /* Ball motion is split across two elements so each axis gets the easing it
    actually needs: this (the track) covers X position, opacity, squash and
-   the trail — all `linear`, so horizontal speed is constant rather than
-   ramping up/down at each waypoint. The only break in speed is the bounce
-   itself, right at the racket. The arc (Y) lives on the child element
-   below, animated independently, so the constant X speed is never fought
-   by the curve's own easing. */
+   the trail — all `linear` per segment, so horizontal speed is constant
+   rather than ramping up/down at each waypoint. The ball crosses in at one
+   constant speed, arrives and waits near the racket while the racket
+   closes the last stretch (matching the storyboard's 700-930ms beat),
+   bounces off at contact, then leaves at one constant speed. The arc (Y)
+   lives on the child element, animated independently, so it never fights
+   the constant X speed. */
 @keyframes loader-ball-x {
   0% {
     transform: translateX(-170px) scale(0.85);
@@ -140,60 +152,69 @@ button, input, select { font: inherit; color: inherit; }
       -10px 0 10px -3px color-mix(in oklch, var(--court) 50%, transparent),
       -20px 0 14px -5px color-mix(in oklch, var(--court) 25%, transparent);
   }
-  10% {
+  8% {
     opacity: 1;
     box-shadow:
       -16px 0 12px -3px color-mix(in oklch, var(--court) 65%, transparent),
       -32px 0 16px -5px color-mix(in oklch, var(--court) 35%, transparent),
       -46px 0 20px -7px color-mix(in oklch, var(--court) 15%, transparent);
   }
-  46.4% {
+  56.45% {
+    /* ball arrives (~700ms) and waits here while the racket closes in */
+    transform: translateX(20px) scale(1);
+    box-shadow:
+      -8px 0 10px -3px color-mix(in oklch, var(--court) 40%, transparent),
+      -16px 0 12px -5px color-mix(in oklch, var(--court) 18%, transparent);
+  }
+  75% {
+    /* impact (~930ms) */
     transform: translateX(48px) scale(1);
     box-shadow:
-      -16px 0 12px -3px color-mix(in oklch, var(--court) 65%, transparent),
-      -32px 0 16px -5px color-mix(in oklch, var(--court) 35%, transparent),
-      -46px 0 20px -7px color-mix(in oklch, var(--court) 15%, transparent);
+      -6px 0 8px -3px color-mix(in oklch, var(--court) 35%, transparent),
+      -12px 0 10px -5px color-mix(in oklch, var(--court) 15%, transparent);
   }
-  48.5% {
+  77% {
     transform: translateX(46px) scale(0.78);
     box-shadow: 0 0 12px 1px color-mix(in oklch, var(--court) 55%, transparent);
   }
-  51% {
+  79% {
     transform: translateX(44px) scale(1);
     box-shadow:
       16px 0 12px -3px color-mix(in oklch, var(--court) 65%, transparent),
       32px 0 16px -5px color-mix(in oklch, var(--court) 35%, transparent),
       46px 0 20px -7px color-mix(in oklch, var(--court) 15%, transparent);
   }
-  90% {
+  92% {
     opacity: 1;
     box-shadow:
       16px 0 12px -3px color-mix(in oklch, var(--court) 65%, transparent),
       32px 0 16px -5px color-mix(in oklch, var(--court) 35%, transparent),
       46px 0 20px -7px color-mix(in oklch, var(--court) 15%, transparent);
   }
-  100% {
+  95.16% {
     transform: translateX(-180px) scale(0.85);
     opacity: 0;
     box-shadow:
       10px 0 10px -3px color-mix(in oklch, var(--court) 50%, transparent),
       20px 0 14px -5px color-mix(in oklch, var(--court) 25%, transparent);
   }
+  100% { transform: translateX(-180px) scale(0.85); opacity: 0; }
 }
-/* The arc: rises and falls once on the way in, once on the way out, each
-   half eased so it decelerates into the peak and accelerates out of it —
-   a real parabola, not a straight-line tent shape. */
+/* The arc: rises and falls on the way in (peaking ~400ms, back to racket
+   height by ~700ms), sits flat during the wait, mirrors on the way out. */
 @keyframes loader-ball-arc {
-  0%    { transform: translateY(0); animation-timing-function: ease-out; }
-  23%   { transform: translateY(-22px); animation-timing-function: ease-in; }
-  46.4% { transform: translateY(0); animation-timing-function: ease-out; }
-  73%   { transform: translateY(-22px); animation-timing-function: ease-in; }
-  100%  { transform: translateY(0); }
+  0%     { transform: translateY(0);      animation-timing-function: ease-out; }
+  32.26% { transform: translateY(-20px);  animation-timing-function: ease-in; }
+  56.45% { transform: translateY(0);      animation-timing-function: linear; }
+  75%    { transform: translateY(0);      animation-timing-function: ease-out; }
+  85%    { transform: translateY(-20px);  animation-timing-function: ease-in; }
+  95.16% { transform: translateY(0); }
+  100%   { transform: translateY(0); }
 }
 @keyframes loader-impact {
-  0%, 44%   { transform: translateX(48px) scale(0.3); opacity: 0; }
-  46.4%     { transform: translateX(48px) scale(1);   opacity: 0.9; }
-  56%, 100% { transform: translateX(48px) scale(1.5); opacity: 0; }
+  0%, 72%   { transform: translateX(48px) scale(0.3); opacity: 0; }
+  75%       { transform: translateX(48px) scale(1);   opacity: 0.9; }
+  82%, 100% { transform: translateX(48px) scale(1.5); opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
