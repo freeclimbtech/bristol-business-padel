@@ -146,9 +146,9 @@ button, input, select { font: inherit; color: inherit; }
    the constant X speed. */
 @keyframes loader-ball-x {
   0%     { transform: translateX(-170px) scale(0.85); opacity: 0; }
-  8%     { opacity: 1; }
-  56.45% { transform: translateX(20px) scale(1); }  /* arrives ~700ms, waits while the racket closes in */
-  75%    { transform: translateX(48px) scale(1); }  /* impact ~930ms */
+  4%     { opacity: 1; }
+  28.23% { transform: translateX(20px) scale(1); }  /* arrives ~350ms (was 700ms) — faster entry, same distance */
+  75%    { transform: translateX(48px) scale(1); }  /* impact ~930ms — unchanged, ball waits here longer now */
   77%    { transform: translateX(46px) scale(0.78); }
   79%    { transform: translateX(44px) scale(1); }
   92%    { opacity: 1; }
@@ -171,7 +171,7 @@ button, input, select { font: inherit; color: inherit; }
       -10px 7px 10px -5px color-mix(in oklch, var(--court) 20%, transparent);
     animation-timing-function: ease-out;
   }
-  15% {
+  7.5% {
     transform: translateY(-14px);
     box-shadow:
       -14px 8px 10px -3px color-mix(in oklch, var(--court) 65%, transparent),
@@ -179,7 +179,7 @@ button, input, select { font: inherit; color: inherit; }
       -36px 18px 16px -7px color-mix(in oklch, var(--court) 15%, transparent);
     animation-timing-function: ease-in;
   }
-  32.26% {
+  16.13% {
     transform: translateY(-20px);
     box-shadow:
       -16px 0 12px -3px color-mix(in oklch, var(--court) 65%, transparent),
@@ -187,14 +187,14 @@ button, input, select { font: inherit; color: inherit; }
       -46px 0 20px -7px color-mix(in oklch, var(--court) 15%, transparent);
     animation-timing-function: ease-in;
   }
-  50% {
+  25% {
     transform: translateY(-8px);
     box-shadow:
       -12px -8px 10px -3px color-mix(in oklch, var(--court) 55%, transparent),
       -22px -14px 12px -5px color-mix(in oklch, var(--court) 25%, transparent);
     animation-timing-function: linear;
   }
-  56.45% {
+  28.23% {
     /* arrived, waiting at racket height — pure horizontal creep, small trail */
     transform: translateY(0);
     box-shadow:
