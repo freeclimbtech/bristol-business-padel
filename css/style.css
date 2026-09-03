@@ -145,71 +145,103 @@ button, input, select { font: inherit; color: inherit; }
    lives on the child element, animated independently, so it never fights
    the constant X speed. */
 @keyframes loader-ball-x {
+  0%     { transform: translateX(-170px) scale(0.85); opacity: 0; }
+  8%     { opacity: 1; }
+  56.45% { transform: translateX(20px) scale(1); }  /* arrives ~700ms, waits while the racket closes in */
+  75%    { transform: translateX(48px) scale(1); }  /* impact ~930ms */
+  77%    { transform: translateX(46px) scale(0.78); }
+  79%    { transform: translateX(44px) scale(1); }
+  92%    { opacity: 1; }
+  95.16% { transform: translateX(-180px) scale(0.85); opacity: 0; }
+  100%   { transform: translateX(-180px) scale(0.85); opacity: 0; }
+}
+/* The arc (Y) and the trail (box-shadow) live together here, on the child
+   element, because the trail has to follow the ball's *actual* on-screen
+   position — X (inherited from the parent track) plus this element's own
+   Y — not just trail flat behind the horizontal motion. The shadow's
+   offset direction rotates through each phase to stay opposite the ball's
+   instantaneous heading: down-left while climbing, pure left at the peak
+   (purely horizontal there), up-left while descending into the racket,
+   then the mirror image — up-right/right/down-right — on the way out. */
+@keyframes loader-ball-arc {
   0% {
-    transform: translateX(-170px) scale(0.85);
-    opacity: 0;
+    transform: translateY(0);
     box-shadow:
-      -10px 0 10px -3px color-mix(in oklch, var(--court) 50%, transparent),
-      -20px 0 14px -5px color-mix(in oklch, var(--court) 25%, transparent);
+      -6px 4px 8px -3px color-mix(in oklch, var(--court) 40%, transparent),
+      -10px 7px 10px -5px color-mix(in oklch, var(--court) 20%, transparent);
+    animation-timing-function: ease-out;
   }
-  8% {
-    opacity: 1;
+  15% {
+    transform: translateY(-14px);
+    box-shadow:
+      -14px 8px 10px -3px color-mix(in oklch, var(--court) 65%, transparent),
+      -26px 14px 14px -5px color-mix(in oklch, var(--court) 35%, transparent),
+      -36px 18px 16px -7px color-mix(in oklch, var(--court) 15%, transparent);
+    animation-timing-function: ease-in;
+  }
+  32.26% {
+    transform: translateY(-20px);
     box-shadow:
       -16px 0 12px -3px color-mix(in oklch, var(--court) 65%, transparent),
       -32px 0 16px -5px color-mix(in oklch, var(--court) 35%, transparent),
       -46px 0 20px -7px color-mix(in oklch, var(--court) 15%, transparent);
+    animation-timing-function: ease-in;
+  }
+  50% {
+    transform: translateY(-8px);
+    box-shadow:
+      -12px -8px 10px -3px color-mix(in oklch, var(--court) 55%, transparent),
+      -22px -14px 12px -5px color-mix(in oklch, var(--court) 25%, transparent);
+    animation-timing-function: linear;
   }
   56.45% {
-    /* ball arrives (~700ms) and waits here while the racket closes in */
-    transform: translateX(20px) scale(1);
+    /* arrived, waiting at racket height — pure horizontal creep, small trail */
+    transform: translateY(0);
     box-shadow:
       -8px 0 10px -3px color-mix(in oklch, var(--court) 40%, transparent),
       -16px 0 12px -5px color-mix(in oklch, var(--court) 18%, transparent);
+    animation-timing-function: linear;
   }
   75% {
-    /* impact (~930ms) */
-    transform: translateX(48px) scale(1);
+    transform: translateY(0);
     box-shadow:
       -6px 0 8px -3px color-mix(in oklch, var(--court) 35%, transparent),
       -12px 0 10px -5px color-mix(in oklch, var(--court) 15%, transparent);
+    animation-timing-function: ease-out;
   }
-  77% {
-    transform: translateX(46px) scale(0.78);
+  78% {
+    /* impact squash — trail collapses to a neutral glow, no direction yet */
+    transform: translateY(0);
     box-shadow: 0 0 12px 1px color-mix(in oklch, var(--court) 55%, transparent);
   }
-  79% {
-    transform: translateX(44px) scale(1);
+  80% {
+    transform: translateY(-4px);
+    box-shadow:
+      10px 6px 8px -3px color-mix(in oklch, var(--court) 55%, transparent),
+      18px 10px 10px -5px color-mix(in oklch, var(--court) 25%, transparent);
+    animation-timing-function: ease-in;
+  }
+  85% {
+    transform: translateY(-20px);
     box-shadow:
       16px 0 12px -3px color-mix(in oklch, var(--court) 65%, transparent),
       32px 0 16px -5px color-mix(in oklch, var(--court) 35%, transparent),
       46px 0 20px -7px color-mix(in oklch, var(--court) 15%, transparent);
+    animation-timing-function: ease-in;
   }
   92% {
-    opacity: 1;
+    transform: translateY(-6px);
     box-shadow:
-      16px 0 12px -3px color-mix(in oklch, var(--court) 65%, transparent),
-      32px 0 16px -5px color-mix(in oklch, var(--court) 35%, transparent),
-      46px 0 20px -7px color-mix(in oklch, var(--court) 15%, transparent);
+      12px -8px 10px -3px color-mix(in oklch, var(--court) 55%, transparent),
+      22px -14px 12px -5px color-mix(in oklch, var(--court) 25%, transparent);
   }
   95.16% {
-    transform: translateX(-180px) scale(0.85);
-    opacity: 0;
+    transform: translateY(0);
     box-shadow:
-      10px 0 10px -3px color-mix(in oklch, var(--court) 50%, transparent),
-      20px 0 14px -5px color-mix(in oklch, var(--court) 25%, transparent);
+      8px 0 10px -3px color-mix(in oklch, var(--court) 35%, transparent),
+      16px 0 12px -5px color-mix(in oklch, var(--court) 15%, transparent);
   }
-  100% { transform: translateX(-180px) scale(0.85); opacity: 0; }
-}
-/* The arc: rises and falls on the way in (peaking ~400ms, back to racket
-   height by ~700ms), sits flat during the wait, mirrors on the way out. */
-@keyframes loader-ball-arc {
-  0%     { transform: translateY(0);      animation-timing-function: ease-out; }
-  32.26% { transform: translateY(-20px);  animation-timing-function: ease-in; }
-  56.45% { transform: translateY(0);      animation-timing-function: linear; }
-  75%    { transform: translateY(0);      animation-timing-function: ease-out; }
-  85%    { transform: translateY(-20px);  animation-timing-function: ease-in; }
-  95.16% { transform: translateY(0); }
-  100%   { transform: translateY(0); }
+  100% { transform: translateY(0); }
 }
 @keyframes loader-impact {
   0%, 72%   { transform: translateX(48px) scale(0.3); opacity: 0; }
