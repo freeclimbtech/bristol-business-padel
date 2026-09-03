@@ -585,6 +585,7 @@ section[id] { scroll-margin-top: 84px; }
   object-fit: cover;
   border-radius: var(--radius);
 }
+.photo-crop-lower { object-position: center 70%; }
 
 @media (max-width: 820px) {
   .session-grid { grid-template-columns: 1fr; }
