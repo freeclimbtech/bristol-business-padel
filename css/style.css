@@ -611,7 +611,7 @@ section[id] { scroll-margin-top: 84px; }
 }
 .host-avatar-b { background: var(--volt); }
 .host-avatar-c { background: oklch(0.8 0.18 60); }
-.host-avatar-photo { object-fit: cover; }
+.host-avatar-photo { object-fit: cover; width: 110px; height: 110px; }
 .hosts-row .section-title { margin-bottom: 16px; }
 .hosts-row p { color: var(--muted); max-width: 56ch; }
 
