@@ -6,47 +6,47 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://businesspadelnetworking.com/about/</loc>
+    <loc>https://businesspadelnetworking.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://businesspadelnetworking.com/members/</loc>
+    <loc>https://businesspadelnetworking.com/members</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://businesspadelnetworking.com/partners/</loc>
+    <loc>https://businesspadelnetworking.com/partners</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://businesspadelnetworking.com/events/</loc>
+    <loc>https://businesspadelnetworking.com/events</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://businesspadelnetworking.com/blog/</loc>
+    <loc>https://businesspadelnetworking.com/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://businesspadelnetworking.com/blog/why-we-started/</loc>
+    <loc>https://businesspadelnetworking.com/blog-why-we-started</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://businesspadelnetworking.com/blog/why-padel-works-for-networking/</loc>
+    <loc>https://businesspadelnetworking.com/blog-why-padel-works-for-networking</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://businesspadelnetworking.com/blog/padel-social-americano/</loc>
+    <loc>https://businesspadelnetworking.com/blog-padel-social-americano</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://businesspadelnetworking.com/contact/</loc>
+    <loc>https://businesspadelnetworking.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
