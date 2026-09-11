@@ -1022,23 +1022,23 @@ section[id] { scroll-margin-top: 84px; }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 20px;
+  gap: 28px;
 }
 .partner-current-logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
   background: #fff;
-  border-radius: 10px;
-  padding: 12px 20px;
+  border-radius: 12px;
+  padding: 20px 32px;
   transition: transform 0.3s var(--ease-out-expo);
 }
 .partner-current-logo:hover { transform: translateY(-2px); }
-.partner-current-logo img { height: 32px; width: auto; }
+.partner-current-logo img { height: 48px; width: auto; }
 .partner-current-logo span {
   color: oklch(0.17 0.02 150);
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
 }
 
 .partner-cta-inner { text-align: center; }
