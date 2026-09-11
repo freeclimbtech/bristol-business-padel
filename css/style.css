@@ -479,7 +479,7 @@ button, input, select { font: inherit; color: inherit; }
   to { transform: translate(40px, 30px); }
 }
 
-.hero-inner { position: relative; z-index: 2; max-width: 780px; width: 100%; min-width: 0; margin-inline: 0; margin-top: clamp(-72px, -6vw, -28px); }
+.hero-inner { position: relative; z-index: 2; max-width: 780px; width: 100%; min-width: 0; margin-inline: 0; margin-top: clamp(-94px, -7.8vw, -36px); padding-left: clamp(32px, 5vw, 80px); }
 .hero-kicker {
   color: var(--muted);
   font-weight: 500;
