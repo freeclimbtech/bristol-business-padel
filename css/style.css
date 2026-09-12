@@ -318,6 +318,7 @@ button, input, select { font: inherit; color: inherit; }
   align-items: center;
   gap: 24px;
   padding-block: 16px;
+  max-width: none;
 }
 .header-row > .btn {
   margin-left: 16px;
@@ -1114,6 +1115,7 @@ section[id] { scroll-margin-top: 84px; }
   grid-template-columns: 1.3fr 1fr 1fr;
   gap: 48px;
   padding-bottom: 48px;
+  max-width: none;
 }
 .brand-footer .brand-mark { color: var(--muted); }
 .footer-tagline { color: var(--muted); margin-top: 18px; max-width: 32ch; }
@@ -1162,6 +1164,7 @@ section[id] { scroll-margin-top: 84px; }
   padding-top: 24px;
   color: var(--muted);
   font-size: 0.85rem;
+  max-width: none;
 }
 
 @media (max-width: 820px) {
