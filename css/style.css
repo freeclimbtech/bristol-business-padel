@@ -837,12 +837,11 @@ section[id] { scroll-margin-top: 84px; }
   padding-block: clamp(64px, 9vw, 100px) clamp(50px, 8vw, 80px);
 }
 .about-photo { padding-bottom: clamp(50px, 8vw, 80px); }
-.about-photo .wrap { display: flex; justify-content: center; }
 .about-photo-img {
-  width: auto;
-  max-width: 100%;
-  max-height: 640px;
-  border-radius: var(--radius);
+  display: block;
+  width: 100%;
+  height: clamp(260px, 34vw, 480px);
+  object-fit: cover;
 }
 .page-title {
   font-family: var(--font-display);
@@ -861,63 +860,104 @@ section[id] { scroll-margin-top: 84px; }
   margin-top: 20px;
 }
 
-/* ---------- About: James / 299 Lighting ---------- */
-.about-avatar {
-  width: 168px;
-  height: 168px;
-  font-size: 3.8rem;
-  flex-shrink: 0;
+/* ---------- About: organiser profile cards (James / Yinka) ---------- */
+.profiles-header { text-align: center; margin-bottom: 44px; }
+.profiles-kicker {
+  color: var(--muted);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
 }
-.about-avatar-photo {
-  width: 168px;
-  height: 168px;
-  border-radius: 50%;
+.profile-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+/* Dark spotlight card regardless of the section's own light/dark theme -
+   re-establish the dark tokens locally, same pattern .section-light uses. */
+.profile-card {
+  --bg-alt: oklch(0.15 0.018 155);
+  --ink: oklch(0.97 0.01 150);
+  --muted: oklch(0.78 0.03 150);
+  --line: oklch(0.32 0.03 155);
+  --court-text: var(--court);
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.profile-card-photo-wrap {
+  position: relative;
+  aspect-ratio: 4 / 5;
+}
+.profile-card-photo {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
 }
-.about-james-grid {
+.profile-card-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.78) 0%, transparent 48%);
+}
+.profile-card-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: color-mix(in oklch, black 45%, transparent);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: 999px;
+}
+.profile-card-name {
+  position: absolute;
+  bottom: 20px;
+  left: 24px;
+  right: 24px;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  color: #fff;
+  line-height: 1;
+}
+.profile-card-body { padding: 28px 26px 32px; }
+.profile-card-body p { color: var(--muted); margin-top: 14px; }
+.profile-card-body .about-sponsor-row { justify-content: flex-start; margin-inline: 0; }
+
+.profile-footnote {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
-  gap: 24px;
-}
-.about-james-grid-b {
-  margin-top: 56px;
-  padding-top: 56px;
+  gap: 20px;
+  margin-top: 48px;
+  padding-top: 40px;
   border-top: 1px solid var(--line);
 }
-/* Desktop: James left, Yinka right, Beth centred underneath the gap */
-@media (min-width: 761px) {
-  .organisers .wrap {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 56px;
-    row-gap: 56px;
-    align-items: start;
-  }
-  .about-james-grid { grid-column: 1; grid-row: 1; }
-  .about-james-grid-yinka {
-    grid-column: 2;
-    grid-row: 1;
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
-  }
-  .about-james-grid-beth {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    max-width: 420px;
-    margin-inline: auto;
-  }
+.profile-footnote-name {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1.4rem;
+  margin-bottom: 4px;
 }
-.about-james-grid h2 { margin-bottom: 6px; }
+.profile-footnote p { color: var(--muted); margin-top: 8px; max-width: 56ch; }
+
+@media (max-width: 760px) {
+  .profile-card-grid { grid-template-columns: 1fr; }
+  .profile-footnote { flex-direction: column; align-items: flex-start; text-align: left; }
+}
+
 .about-role {
   color: var(--court-text);
   font-weight: 700;
   font-size: 0.95rem;
   margin-bottom: 18px;
 }
-.about-james-grid p { color: var(--muted); margin-top: 14px; max-width: 60ch; margin-inline: auto; }
 .about-sponsor-row {
   display: flex;
   align-items: center;
