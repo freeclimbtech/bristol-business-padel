@@ -1,7 +1,10 @@
 (() => {
   "use strict";
 
-  const JAMES_EMAIL = "james@bristolbusinesspadel.co.uk"; // TODO: replace with James's real email
+  // Used only as the fallback contact shown if the join-form submission
+  // fails - same address already used site-wide (contact.html "Email
+  // James"). Confirm with James this is correct if unsure.
+  const JAMES_EMAIL = "james@bristolbusinesspadel.co.uk";
 
   // Padel loading animation: plays once (ball enters, hits the racket,
   // returns), then holds on the racket-only frame until the page has
@@ -62,29 +65,56 @@
     revealEls.forEach((el) => el.classList.add("is-visible"));
   }
 
-  // Join form -> mailto handoff (no backend wired up yet)
+  // Join form -> real submission via Web3Forms (no backend of our own
+  // needed - the access key is a public per-domain form identifier, not a
+  // secret, and is the intended way to embed Web3Forms client-side).
   const form = document.getElementById("joinForm");
   if (form) {
-    form.addEventListener("submit", (e) => {
+    const errorEl = document.getElementById("formError");
+    const successEl = document.getElementById("formSuccess");
+    const submitBtn = form.querySelector("button[type=submit]");
+    const submitLabel = submitBtn ? submitBtn.querySelector(".btn-label") : null;
+
+    const setError = (message) => {
+      if (!errorEl) return;
+      errorEl.textContent = message;
+      errorEl.hidden = !message;
+    };
+
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const data = new FormData(form);
-      const name = (data.get("name") || "").toString().trim();
-      const email = (data.get("email") || "").toString().trim();
-      const phone = (data.get("phone") || "").toString().trim();
-      const business = (data.get("business") || "").toString().trim();
-      const level = (data.get("level") || "").toString().trim();
 
-      const subject = `Bristol Business Padel — join request from ${name}`;
-      const bodyLines = [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        phone ? `Phone: ${phone}` : null,
-        `Business / role: ${business}`,
-        `Padel level: ${level}`,
-      ].filter(Boolean);
+      // Native required/type=email/required-select validation first -
+      // reportValidity() shows the browser's own accessible error UI.
+      if (!form.reportValidity()) return;
 
-      const mailto = `mailto:${JAMES_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
-      window.location.href = mailto;
+      setError("");
+      if (submitBtn) submitBtn.disabled = true;
+      if (submitLabel) submitLabel.textContent = "Sending…";
+
+      try {
+        const payload = Object.fromEntries(new FormData(form));
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const result = await response.json().catch(() => ({}));
+
+        if (response.ok && result.success) {
+          form.hidden = true;
+          if (successEl) successEl.hidden = false;
+        } else {
+          throw new Error(result.message || "Submission failed");
+        }
+      } catch (err) {
+        setError(
+          "Something went wrong sending your request - please try again, or email James directly at " + JAMES_EMAIL + "."
+        );
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+        if (submitLabel) submitLabel.textContent = "Send request";
+      }
     });
   }
 
