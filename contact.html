@@ -27,7 +27,7 @@
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%23101a12%22/><circle cx=%2250%22 cy=%2250%22 r=%2222%22 fill=%22%23c6ff5e%22/></svg>">
 
-<link rel="stylesheet" href="/css/style.css?v=202609251700">
+<link rel="stylesheet" href="/css/style.css?v=202609251800">
 </head>
 <body>
 
@@ -108,9 +108,54 @@
       <div class="contact-row contact-row-b">
         <div data-reveal>
           <h2 class="section-title">Anything else</h2>
-          <p>General questions go straight to James.</p>
+          <p>General questions go straight to the team.</p>
         </div>
-        <a class="btn btn-ghost" href="mailto:james@bristolbusinesspadel.co.uk?subject=General%20enquiry%20-%20Business%20Padel%20Networking">Email James</a>
+        <a class="btn btn-ghost" href="#message">Send a message</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MESSAGE FORM -->
+  <section class="message" id="message">
+    <div class="wrap join-grid">
+      <div class="join-copy" data-reveal>
+        <h2 class="section-title">Send us a message</h2>
+        <p>Questions, partnering, coaching or anything else. Pop it in here and it goes straight to the team.</p>
+      </div>
+      <div class="join-form-wrap">
+        <form class="join-form" id="enquiryForm" data-web3form data-success="enquirySuccess" data-reveal>
+          <input type="hidden" name="access_key" value="2c937fb2-a26c-47b7-b822-96b5688fc45b">
+          <input type="hidden" name="subject" value="Business Padel Networking &mdash; website message">
+          <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off">
+          <div class="field">
+            <label for="enq-name">Name</label>
+            <input id="enq-name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="enq-email">Email</label>
+            <input id="enq-email" name="email" type="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="enq-topic">What's it about?</label>
+            <select id="enq-topic" name="topic" required>
+              <option value="general">A general question</option>
+              <option value="partnering">Partnering with the group</option>
+              <option value="coaching">Coaching</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="enq-message">Message</label>
+            <textarea id="enq-message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block"><span class="btn-label">Send message</span></button>
+          <p class="form-error" role="alert" hidden></p>
+          <p class="form-note">Goes straight to the team &mdash; no email app required.</p>
+        </form>
+        <div class="form-success" id="enquirySuccess" role="status" hidden>
+          <h3>Thanks &mdash; your message has been received.</h3>
+          <p>We&rsquo;ll get back to you.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -164,6 +209,6 @@
   </div>
 </footer>
 
-<script src="/js/script.js?v=202609031520"></script>
+<script src="/js/script.js?v=202609251800"></script>
 </body>
 </html>

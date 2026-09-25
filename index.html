@@ -27,7 +27,7 @@
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%23101a12%22/><circle cx=%2250%22 cy=%2250%22 r=%2222%22 fill=%22%23c6ff5e%22/></svg>">
 
-<link rel="stylesheet" href="/css/style.css?v=202609251700">
+<link rel="stylesheet" href="/css/style.css?v=202609251800">
 
 <script type="application/ld+json">
 {
@@ -68,7 +68,7 @@
     "@type": "Offer",
     "price": "11",
     "priceCurrency": "GBP",
-    "description": "First session free for new players; £11 per session after that.",
+    "description": "First session free for new players; £11 per session after that, breakfast included.",
     "availability": "https://schema.org/InStock",
     "url": "https://businesspadelnetworking.com/#join"
   }
@@ -89,10 +89,18 @@
     },
     {
       "@type": "Question",
+      "name": "Do I need to bring a racket?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, rackets are provided."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "What does it cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "There's no membership fee. Sessions are £11, and your first one is free."
+        "text": "There's no membership fee. Sessions are £11, breakfast included, and your first one is free."
       }
     },
     {
@@ -205,7 +213,7 @@
         <div><dt>08:00-10:00</dt><dd>every Friday</dd></div>
         <div><dt>&pound;11</dt><dd>first session free</dd></div>
         <div><dt>All abilities</dt><dd>coached and matched</dd></div>
-        <div><dt>Breakfast</dt><dd>and networking after</dd></div>
+        <div><dt>Breakfast</dt><dd>included, then networking</dd></div>
       </dl>
     </div>
   </section>
@@ -238,10 +246,10 @@
       <h2 class="section-title">How a Friday works</h2>
       <p class="section-lede">Never played? Half the group hadn't either. Here's the morning, start to finish.</p>
       <ol class="steps-list">
-        <li data-reveal><span class="step-num">01</span><h3>Arrive</h3><p>Turn up at Rocket Padel Bristol for 8am and say hello. James, Yinka and Beth are usually the ones handing out rackets.</p></li>
+        <li data-reveal><span class="step-num">01</span><h3>Arrive</h3><p>Turn up at Rocket Padel Bristol for 8am and say hello. Rackets are provided, and James, Yinka and Beth are usually the ones handing them out.</p></li>
         <li data-reveal><span class="step-num">02</span><h3>Get matched</h3><p>You're mixed in with other players so the games stay close, whatever your level.</p></li>
         <li data-reveal><span class="step-num">03</span><h3>Play</h3><p>Two hours of padel, 8 to 10. A coach is on court the whole time if you want pointers.</p></li>
-        <li data-reveal><span class="step-num">04</span><h3>Breakfast</h3><p>Head to the caf&eacute; at the venue for breakfast and a proper catch up.</p></li>
+        <li data-reveal><span class="step-num">04</span><h3>Breakfast</h3><p>Head to the caf&eacute; at the venue for breakfast, which is included, and a proper catch up.</p></li>
         <li data-reveal><span class="step-num">05</span><h3>Network</h3><p>This is where most of the actual networking happens: over coffee, not over a spreadsheet.</p></li>
       </ol>
       <a class="link-arrow" href="#join">Request to join &rarr;</a>
@@ -305,6 +313,27 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS (PLACEHOLDERS - replace with real member quotes before promoting the site) -->
+  <section class="testimonials" id="testimonials">
+    <div class="wrap">
+      <h2 class="section-title">What members say</h2>
+      <div class="quote-grid">
+        <figure class="quote-card" data-reveal data-placeholder>
+          <blockquote>Placeholder: a couple of sentences from a regular, in their own words.</blockquote>
+          <figcaption><strong>Member name</strong><span>Business</span></figcaption>
+        </figure>
+        <figure class="quote-card" data-reveal data-placeholder>
+          <blockquote>Placeholder: a couple of sentences from someone who'd never played before.</blockquote>
+          <figcaption><strong>Member name</strong><span>Business</span></figcaption>
+        </figure>
+        <figure class="quote-card" data-reveal data-placeholder>
+          <blockquote>Placeholder: what they got out of it for their business.</blockquote>
+          <figcaption><strong>Member name</strong><span>Business</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- VENUE -->
   <section class="venue section-light" id="venue">
     <div class="wrap venue-grid">
@@ -345,8 +374,12 @@
           <p>No. You're mixed in with other players so the games stay close whatever your level, and a coach is on court the whole time. Never picked up a racket? Half the group hadn't either.</p>
         </details>
         <details class="faq-item">
+          <summary>Do I need to bring a racket?</summary>
+          <p>No, rackets are provided.</p>
+        </details>
+        <details class="faq-item">
           <summary>What does it cost?</summary>
-          <p>There's no membership fee. Sessions are £11, and your first one is free.</p>
+          <p>There's no membership fee. Sessions are £11, breakfast included, and your first one is free.</p>
         </details>
         <details class="faq-item">
           <summary>Who is it for?</summary>
@@ -376,14 +409,14 @@
         <p>Fill this in and it goes straight to James. He adds everyone to the
           WhatsApp group personally, so expect a reply before the week's out.</p>
         <ul class="join-checklist">
-          <li>No membership fee — sessions are £11, and your first one is free</li>
+          <li>No membership fee — sessions are £11, breakfast included, and your first one is free</li>
           <li>No padel experience needed</li>
           <li>Friday 8-10am, Rocket Padel Bristol</li>
         </ul>
       </div>
 
       <div class="join-form-wrap">
-        <form class="join-form" id="joinForm" data-reveal>
+        <form class="join-form" id="joinForm" data-web3form data-success="formSuccess" data-reveal>
           <input type="hidden" name="access_key" value="2c937fb2-a26c-47b7-b822-96b5688fc45b">
           <input type="hidden" name="subject" value="Business Padel Networking &mdash; join request">
           <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off">
@@ -478,6 +511,6 @@
   </div>
 </footer>
 
-<script src="/js/script.js?v=202609151030"></script>
+<script src="/js/script.js?v=202609251800"></script>
 </body>
 </html>

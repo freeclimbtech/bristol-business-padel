@@ -1,11 +1,6 @@
 (() => {
   "use strict";
 
-  // Used only as the fallback contact shown if the join-form submission
-  // fails - same address already used site-wide (contact.html "Email
-  // James"). Confirm with James this is correct if unsure.
-  const JAMES_EMAIL = "james@bristolbusinesspadel.co.uk";
-
   // Padel loading animation: plays once (ball enters, hits the racket,
   // returns), then holds on the racket-only frame until the page has
   // actually finished loading, then fades out. A safety cap stops a slow
@@ -65,15 +60,15 @@
     revealEls.forEach((el) => el.classList.add("is-visible"));
   }
 
-  // Join form -> real submission via Web3Forms (no backend of our own
-  // needed - the access key is a public per-domain form identifier, not a
-  // secret, and is the intended way to embed Web3Forms client-side).
-  const form = document.getElementById("joinForm");
-  if (form) {
-    const errorEl = document.getElementById("formError");
-    const successEl = document.getElementById("formSuccess");
+  // Forms -> real submission via Web3Forms (no backend of our own needed;
+  // the access key is a public per-domain form identifier, not a secret).
+  // Any <form data-web3form data-success="id"> gets this behaviour.
+  document.querySelectorAll("form[data-web3form]").forEach((form) => {
+    const errorEl = form.querySelector(".form-error");
+    const successEl = document.getElementById(form.dataset.success);
     const submitBtn = form.querySelector("button[type=submit]");
     const submitLabel = submitBtn ? submitBtn.querySelector(".btn-label") : null;
+    const idleLabel = submitLabel ? submitLabel.textContent : "";
 
     const setError = (message) => {
       if (!errorEl) return;
@@ -84,8 +79,8 @@
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      // Native required/type=email/required-select validation first -
-      // reportValidity() shows the browser's own accessible error UI.
+      // Native required/type=email validation first - reportValidity()
+      // shows the browser's own accessible error UI.
       if (!form.reportValidity()) return;
 
       setError("");
@@ -108,14 +103,21 @@
           throw new Error(result.message || "Submission failed");
         }
       } catch (err) {
-        setError(
-          "Something went wrong sending your request - please try again, or email James directly at " + JAMES_EMAIL + "."
-        );
+        setError("Something went wrong sending that. Nothing has been lost, so please check your details and try again in a moment.");
       } finally {
         if (submitBtn) submitBtn.disabled = false;
-        if (submitLabel) submitLabel.textContent = "Send request";
+        if (submitLabel) submitLabel.textContent = idleLabel;
       }
     });
+  });
+
+  // /contact?topic=partnering pre-selects the topic on the message form
+  const topicSelect = document.getElementById("enq-topic");
+  if (topicSelect) {
+    const wanted = new URLSearchParams(window.location.search).get("topic");
+    if (wanted && [...topicSelect.options].some((o) => o.value === wanted)) {
+      topicSelect.value = wanted;
+    }
   }
 
   // Mobile nav: hamburger toggle opens/closes the nav as a dropdown panel
