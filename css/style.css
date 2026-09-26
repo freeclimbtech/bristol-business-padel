@@ -629,26 +629,6 @@ section[id] { scroll-margin-top: 84px; }
   }
 }
 
-/* ---------- Group photo (full-bleed band) ---------- */
-.group-photo { position: relative; }
-.group-photo-img {
-  display: block;
-  width: 100%;
-  height: clamp(280px, 38vw, 560px);
-  object-fit: cover;
-}
-.group-photo-caption {
-  position: absolute;
-  bottom: 18px;
-  right: clamp(20px, 5vw, 40px);
-  margin: 0;
-  color: #fff;
-  font-size: 0.85rem;
-  background: color-mix(in oklch, black 45%, transparent);
-  backdrop-filter: blur(6px);
-  padding: 7px 14px;
-  border-radius: 999px;
-}
 
 /* ---------- Videos ---------- */
 .video-grid {
