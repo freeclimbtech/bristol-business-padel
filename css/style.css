@@ -539,29 +539,8 @@ button, input, select { font: inherit; color: inherit; }
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  margin-bottom: 30px;
 }
 
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 24px;
-  border-top: 1px solid var(--line);
-  padding-top: 18px;
-  max-width: 740px;
-}
-.hero-stats dt {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 1.3rem;
-  color: var(--court);
-  text-transform: uppercase;
-}
-.hero-stats dd {
-  margin: 4px 0 0;
-  color: var(--muted);
-  font-size: 0.88rem;
-}
 
 /* ---------- Section shared ---------- */
 section { padding-block: clamp(70px, 10vw, 120px); }
