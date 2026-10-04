@@ -591,11 +591,25 @@ section[id] { scroll-margin-top: 84px; }
   height: auto;
   aspect-ratio: 4 / 3;
 }
+/* The rewritten copy (7 short paragraphs) runs much longer than the photo.
+   A 2-column grid either centers the shorter photo (leaving empty space
+   above AND below it) or pins it to the top (leaving empty space below,
+   beside the later paragraphs) - neither looks right once text and photo
+   are mismatched this much. Float the photo inside the text instead: the
+   heading and early paragraphs wrap around it like a pull-image, and once
+   the copy runs past the photo's bottom, later paragraphs naturally
+   continue full width with no dead space. */
+.session-grid-wide { display: block; }
+.session-grid-wide .session-copy { max-width: none; display: flow-root; }
 @media (min-width: 821px) {
-  /* The rewritten copy runs much longer than the photo, so centering it
-     (the base .session-grid behaviour) floated the photo with empty space
-     above and below. Pin it level with the heading instead. */
-  .session-grid-wide { grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: start; }
+  .session-grid-wide .session-photo-group {
+    float: right;
+    width: 46%;
+    margin: 0 0 28px 40px;
+  }
+}
+@media (max-width: 820px) {
+  .session-grid-wide .session-photo-group { width: 100%; margin: 0 0 28px; }
 }
 
 @media (max-width: 820px) {
