@@ -1147,6 +1147,9 @@ section[id] { scroll-margin-top: 84px; }
 }
 .partner-current-logo:hover { transform: translateY(-2px); }
 .partner-current-logo img { height: 48px; width: auto; }
+/* Stacked (icon over wordmark) logos need more height to keep the name legible */
+.partner-current-logo-stacked { padding-block: 12px; }
+.partner-current-logo-stacked img { height: 84px; }
 .partner-current-logo span {
   color: oklch(0.17 0.02 150);
   font-weight: 700;
